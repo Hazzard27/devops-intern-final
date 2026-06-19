@@ -1,7 +1,7 @@
 DevOps Intern Final Assessment
 
 
-![CI Pipeline](https://github.com/Hazzard77/devops-intern-final/actions/workflows/ci.yml/badge.svg)
+![CI Pipeline](https://github.com/Hazzard27/devops-intern-final/actions/workflows/ci.yml/badge.svg)
 
 
 Author: Sahil

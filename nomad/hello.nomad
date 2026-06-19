@@ -17,6 +17,9 @@ job "hello-devops" {
         cpu    = 20
         memory = 32
       }
+
     }
+
   }
+
 }

@@ -1,0 +1,31 @@
+Grafana Loki Setup
+
+1. Start Loki
+
+docker run -d \
+--name loki \
+-p 3100:3100 \
+grafana/loki
+
+2. Verify Loki
+
+curl http://localhost:3100/ready
+
+3. Send Sample Log                                                                                  ─╯
+
+TS=$(date +%s%N)
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  "http://localhost:3100/loki/api/v1/push" \
+  --data-raw "{\"streams\":[{\"stream\":{\"job\":\"hello-devops\"},\"values\":[[\"$TS\",\"Hello from Loki! DevOps pipeline is live.\"]]}]}"
+
+4. Query Logs
+
+curl -G \
+  "http://localhost:3100/loki/api/v1/query" \
+  --data-urlencode 'query={job="hello-devops"}' | jq
+
+Expected Result:
+
+Hello from Loki! DevOps pipeline is live.
